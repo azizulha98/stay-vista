@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Container from "../../components/Shared/Container";
-import { useParams } from 'react-router-dom';
-import Loader from "../../components/Shared/Loader";
+import { useLoaderData } from 'react-router-dom';
+// import Loader from "../../components/Shared/Loader";
 import { Helmet } from "react-helmet-async";
 import Header from "../../components/RomeDetails/Header";
 import RoomInfo from "../../components/RomeDetails/RoomInfo";
@@ -9,23 +9,24 @@ import RoomReservation from "../../components/RomeDetails/RoomReservation";
 
 
 const RoomDetails = () => {
-  const { id } = useParams();
-
-  const [room, setRoom] = useState({});
+  const room = useLoaderData()
+  // const { id } = useParams();
+  // const [room, setRoom] = useState({});
   // const [params, setParams] = useSearchParams();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   // const category = params.get('category');
-  useEffect(() => {
-    setLoading(true)
-    fetch('/rooms.json')
-      .then(res => res.json())
-      .then(data => {
-        const singleRoom = data.find(room => room._id === id)
-        setRoom(singleRoom)
-        setLoading(false)
-      })
-  }, [id])
-  if (loading) return <Loader />
+  // useEffect(() => {
+  //   setLoading(true)
+  //   fetch('/rooms.json')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       const singleRoom = data.find(room => room._id === id)
+  //       setRoom(singleRoom)
+  //       setLoading(false)
+  //     })
+  // }, [id])
+  // if (loading) return <Loader />
+
   return (
     <Container>
       <Helmet><title>{room?.title}</title></Helmet>
